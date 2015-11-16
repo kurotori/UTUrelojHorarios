@@ -4,7 +4,7 @@
 
 body {
     margin: 0px 0px 0px 0px;
-    background-image: url(img/fondo.jpg);
+    background-image: url(../img/fondo.jpg);
     background-size: 100%, 100%;
     -webkit-background-size: 100% 100%;           /* Safari 3.0 */
     -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */

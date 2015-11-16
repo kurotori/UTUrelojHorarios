@@ -1,4 +1,5 @@
 <?php
+    $estado=true;
     $titulo="Menú Principal";
     $cssExtra="";
     $jsExtra='
@@ -8,15 +9,16 @@
         });
     </script>
         ';
+
     include 'parteshtml.php';
     
     echo $encabezadohtml;
     
+
 ?>    
 <div id="marco" class="cuadro-login-admin ui-corner-all">
     <div id="encabezado" class="titulo ui-corner-tl ui-corner-tr">
         <div style="width:40px;height:100%;float:left;margin-top:-3px;">
-<!--            <img class="icono-usuario" src="img/glypho/png/nut4.png">-->
         </div>
         <div style="width:90%;height:100%;float:left;">
             <?php echo $titulo; ?>

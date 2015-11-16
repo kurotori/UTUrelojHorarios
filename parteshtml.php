@@ -4,13 +4,13 @@ $escuela="Escuela Técnica de Melo";
 $encabezadohtml ="<html><head>
 		<meta http-equiv='Content-type' content='text/html;charset=UTF-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-		<link rel='stylesheet' href='utu.css'>
-        <link rel='stylesheet' href='jqueryui/jquery-ui.css'>
+		<link rel='stylesheet' href='css/utu.css'>
+        <link rel='stylesheet' href='js/jqueryui/jquery-ui.css'>
         ".$cssExtra."
-		<script type='text/javascript' src='jquery.js'></script>
-        <script type='text/javascript' src='jqueryui/jquery-ui.js'></script>
-		<script type='text/javascript' src='utu.js'></script>
-        <script>".$jsExtra."</script>
+		<script type='text/javascript' src='js/jquery.js'></script>
+        <script type='text/javascript' src='js/jqueryui/jquery-ui.js'></script>
+		<script type='text/javascript' src='js/utu.js'></script>
+        ".$jsExtra."
 		<title>".$escuela." - ".$titulo."</title>
 	</head>
 	<body onload='loginMal(estado)'>";
@@ -18,12 +18,13 @@ $encabezadohtml ="<html><head>
 $encabezadohtmlcam = "<html><head>
 		<meta http-equiv='Content-type' content='text/html;charset=UTF-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-		<link rel='stylesheet' href='utu.css'>
-        <link rel='stylesheet' href='jqueryui/jquery-ui.css'>
+		<link rel='stylesheet' href='css/utu.css'>
+        <link rel='stylesheet' href='js/jqueryui/jquery-ui.css'>
         ".$cssExtra."
-		<script type='text/javascript' src='jquery.js'></script>
-        <script type='text/javascript' src='jqueryui/jquery-ui.js'></script>
-		<script type='text/javascript' src='utu.js'></script>
+		<script type='text/javascript' src='js/jquery.js'></script>
+        <script type='text/javascript' src='js/jqueryui/jquery-ui.js'></script>
+        <script type='text/javascript' src='js/webcamfs/webcam.js'></script>
+		<script type='text/javascript' src='js/utu.js'></script>
         <script>".$jsExtra."</script>
 		<title>".$escuela." - ".$titulo."</title>
 	</head>

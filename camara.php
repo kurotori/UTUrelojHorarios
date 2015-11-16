@@ -14,6 +14,8 @@
         $jsExtra="var estado=true;";
     }
 
+    
+
     include 'parteshtml.php';
     echo $encabezadohtmlcam;
     
@@ -29,7 +31,17 @@
     </div>
     
     <div id="contenido" class="contenido">
-        <div id="cuadro-camara" class="ui-corner-all"></div>
+        <div id="cuadro-camara" name="cuadro-camara" class="ui-corner-all"></div>
+        <script>
+            Webcam.set({
+                width: 320,
+                height: 240,
+                force_flash: false,
+                image_format: 'jpeg',
+                jpeg_quality: 10
+            });
+            Webcam.attach( '#cuadro-camara' );
+        </script>
         <form name="acceso" action="">
             <table class="tabla-ingreso-datos">
                 <tr>
