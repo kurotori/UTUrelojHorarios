@@ -17,6 +17,7 @@ function firmar(){
 //Si el largo del contenido de 'cedula' es menor al establecido... 
 		$("#loginMal").html("asdfkjalsdfjañj");
         $('#loginMal').fadeIn();
+        loginMal();
 //        
 //		document.forms['acceso'].submit(
 //			function(event){
