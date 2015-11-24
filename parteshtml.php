@@ -24,6 +24,7 @@ $encabezadohtmlcam = "<html><head>
 		<script type='text/javascript' src='js/jquery.js'></script>
         <script type='text/javascript' src='js/jqueryui/jquery-ui.js'></script>
         <script type='text/javascript' src='js/webcamfs/webcam.js'></script>
+        <script type='text/javascript' src='js/camara.js'></script>
 		<script type='text/javascript' src='js/utu.js'></script>
         <script>".$jsExtra."</script>
 		<title>".$escuela." - ".$titulo."</title>

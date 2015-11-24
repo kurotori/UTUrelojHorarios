@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `UTUasistencias`.`funcionarios` (
   `apellido1` VARCHAR(20) NOT NULL,
   `apellido2` VARCHAR(20) NULL,
   `cargo` ENUM('docente','administrativo','auxiliar') NOT NULL,
-  `admin` TINYINT(1) NOT NULL DEFAULT 'false',
+  `admin` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`ci`))
 ENGINE = InnoDB;
 
