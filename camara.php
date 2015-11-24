@@ -32,7 +32,16 @@
     
     <div id="contenido" class="contenido">
         <div id="cuadro-camara" name="cuadro-camara" class="ui-corner-all"></div>
-        
+        <script>
+            Webcam.set({
+                width: 320,
+                height: 240,
+                force_flash: false,
+                image_format: 'jpeg',
+                jpeg_quality: 10
+            });
+            Webcam.attach( '#cuadro-camara' );
+        </script>
         <form name="acceso" action="">
             <table class="tabla-ingreso-datos">
                 <tr>
@@ -43,9 +52,7 @@
                         <img class="icono-usuario" src="img/glypho/png/user7.png">
                     </td>
                     <td>
-                        <input type="text" id="cedula" name="cedula" 
-                               class="ingreso-datos" autocomplete="off" 
-                               size="8" maxlength="8">
+                        <input type="text" class="ingreso-datos" autocomplete="off" id="cedula" name="cedula" size="8" maxlength="8">
                     </td>
                 </tr>
                 <tr>
@@ -54,9 +61,7 @@
                             Cédula Incorrecta
                         </p>
                         
-                        <input type="button" value="Firmar" 
-                               class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" 
-                               style="font-size:18px;" onclick="firmar();">
+                        <input type="submit" value="Firmar" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" style="font-size:18px;">
                     </td>
                 </tr>
             </table>
