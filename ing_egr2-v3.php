@@ -82,9 +82,9 @@
 		echo "<script>console.log('BD OK!!!')</script>";
 	}
 	
+	// 1 - Chequear existencia de la CI
 	
-	
-	$consulta=mysqli_query($BDConn,"select current_time,current_date,nombre1,nombre2,apellido1,apellido2 from usuarios where cedula='$cedula'");
+	$consulta=mysqli_query($BDConn,"select current_time(),current_date(),nombre,nombre2,apellido,apellido2 from funcionarios where CI='$cedula'");
 	
 	$fila=mysqli_fetch_assoc($consulta);
 	
@@ -98,15 +98,18 @@
 		exit;
 		}
 	else{
-		echo "else OK";
-				$hora=$fila['current_time'];
-				$fecha=$fila['current_date'];
-				$nombre1=$fila['nombre1'];
-				$nombre2=$fila['nombre2'];
-				$apellido1=$fila['apellido1'];
-				$apellido2=$fila['apellido2'];
-				echo $hora;
-				$consultaIngreso=mysqli_query($BDConn, "select count(*) from registro where cedula='$cedula' and fecha='$fecha' and horasal='23:59:00.000000'");
+		echo "CI OK";
+        $hora=$fila['current_time()'];
+		$fecha=$fila['current_date()'];
+		$nombre1=$fila['nombre'];
+		$nombre2=$fila['nombre2'];
+		$apellido1=$fila['apellido'];
+		$apellido2=$fila['apellido2'];
+		echo $hora;
+        
+        // 
+        
+		$consultaIngreso=mysqli_query($BDConn, "select count(*) from registro where cedula='$cedula' and fecha='$fecha' and horasal='23:59:00.000000'");
 				
 				while($row_ing=$consultaIngreso->fetch_array(MYSQLI_NUM)){
 					$cuenta_ing=$row_ing[0];
