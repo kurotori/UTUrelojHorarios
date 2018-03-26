@@ -1,60 +1,57 @@
+<html>
+  <head>
+  		<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+		<link rel="stylesheet" href="utu.css">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+
+		
+		</script>
 <?php
-    $titulo="Menú Principal";
-    $cssExtra="";
-    $jsExtra='
-    <script>
-        $(function() {
-            
-        });
-    </script>
-        ';
-    include 'parteshtml.php';
-    
-    echo $encabezadohtml;
-    
-?>    
-<div id="marco" class="cuadro-login-admin ui-corner-all">
-    <div id="encabezado" class="titulo ui-corner-tl ui-corner-tr">
-        <div style="width:40px;height:100%;float:left;margin-top:-3px;">
-<!--            <img class="icono-usuario" src="img/glypho/png/nut4.png">-->
-        </div>
-        <div style="width:90%;height:100%;float:left;">
-            <?php echo $titulo; ?>
-        </div>
-    </div>
-    
-    <div id="contenido" class="contenido">
-        <div id="menu">
-             <table class="tabla-menu-inicial tabla-ingreso-datos" >
-                <tr>
-                    <td class="tabla-ingreso-datos-celda-icono">
-                        <img class="icono-usuario" src="img/glypho/png/bell70.png">
-                    </td>
-                    <th>
-                        <b><a href="camara.php?estado=true">Sistema de Registro de Asistencias</a></b>
-                    </th>
-                </tr>
-                <tr>
-                </tr>
-                <tr>
-                    <td class="tabla-ingreso-datos-celda-icono">
-                        <img class="icono-usuario" src="img/glypho/png/nut4-v2.png">
-                    </td>
-                    <th>
-                        <b><a href="login.php?estado=true">Administración del Sistema</b></a>
-                    </th>
-                </tr>
-            </table>
-            
-        </div>
-        
-    </div>
-</div>
+	$titulo="Sistema de Control de Asistencias de Funcionarios";
+	$scriptJS="
+		$(document).ready(function(){
+			$('.listOpLk').click(
+				function(){
+					$(this).find('.listOp').slideToggle();
+				}
+			);
+		});";
+	include "head-basico.php";
+?>		
 
+  <body ONLOAD="startTime();">
+<div id="GUI_Ingreso" class="bordes" style="height:auto;text-align:center;">
 
+<b>Opciones Del Sistema:</b><BR/><BR/>
 
+<A HREF="ing_egr1.php">Ventana de Registro de Ingresos</a>
+<br/><br/>
+<span class="listOpLk">
+	<A  HREF="#">Gestión del Sistema</a>
+	<span class="listOp">
+		<ul>
+			<li><A HREF="registrarusuario1.php">Ingresar Usuarios al Sistema</a></li>
+			<li><a href="listausuarios.php?usuario=">Administración de Usuarios</a></li>
+			<li><A HREF="listacargos.php">Modificar Listado de Cargos Disponibles</a></li>
+			<li><A HREF="registroadmin.php">Crear Usuario Administrativo</a></li>
+			
+		</ul>
+	</span>
+</span>	
+<br/><br/>
+<span class="listOpLk">
+	<A  HREF="#">Generar Listados de Control de Asistencias</a>
+	<span class="listOp">
+			<ul>
+				<li><a href="historialfuncionarios1.php">Listado para Impresi&oacute;n y/o Registro</a></li>
+				<li><a href="historialfuncionarios3.php">Listado con Im&aacute;genes de Ingreso y Salida</a></li>
+				<li><A HREF="funcionariospresentes.php">Listado de Funcionarios Presentes</a></li>
+			</ul>
+	</span>
+</span>
+<br/><br/>
 
-
-<?php
-    echo $piehtmlbasico;
-?>
+<?php include "piedepagina.php"; ?>
+  </body>
+</html>
