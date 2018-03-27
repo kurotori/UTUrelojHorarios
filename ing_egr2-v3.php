@@ -25,7 +25,7 @@
 		function InitializeTimer()
 		{
 			// Set the length of the timer, in seconds
-			secs = 3
+			secs = 20
 			StopTheClock()
 			StartTheTimer()
 		}
@@ -59,6 +59,7 @@
 	include "datos.php";
 	include "head-basico.php";
 	include "piedepagina.php";
+    include "funciones.php";
 	
 	echo "
 		<body ONLOAD='InitializeTimer();startTime();'>
@@ -69,11 +70,11 @@
 	";
 	/* -------- CONEXION A LA BASE DE DATOS -------- */	
 	
-	$BDConn=mysqli_connect($servidor,$usuario,$pword,$baseD);
-	
+	$BDConn= new mysqli($servidor,$usuario,$pword,$baseD);
+        //mysqli_connect($servidor,$usuario,$pword,$baseD);
 	
 	$BDStatus="";
-	
+
 	if (mysqli_connect_errno($BDConn)){
 		echo 'Fallo al conectar a MySQL: ' . mysqli_connect_error();
 		}
@@ -83,8 +84,11 @@
 	}
 	
 	// 1 - Chequear existencia de la CI
-	
-	$consulta=mysqli_query($BDConn,"select current_time(),current_date(),nombre,nombre2,apellido,apellido2 from funcionarios where CI='$cedula'");
+	$consultaCI = "select current_time(),current_date(),
+                    nombre,nombre2,apellido,apellido2 
+                    from funcionarios 
+                    where CI='$cedula'";
+	$consulta=mysqli_query($BDConn,$consultaCI);
 	
 	$fila=mysqli_fetch_assoc($consulta);
 	
@@ -97,6 +101,7 @@
 			");
 		exit;
 		}
+
 	else{
 		echo "CI OK";
         $hora=$fila['current_time()'];
@@ -107,52 +112,49 @@
 		$apellido2=$fila['apellido2'];
 		echo $hora;
         
-        // 
-        
-		$consultaIngreso=mysqli_query($BDConn, "select count(*) from registro where cedula='$cedula' and fecha='$fecha' and horasal='23:59:00.000000'");
-				
-				while($row_ing=$consultaIngreso->fetch_array(MYSQLI_NUM)){
-					$cuenta_ing=$row_ing[0];
-					
-					if($cuenta_ing==0){
-					/*Generación de un REGISTRO ABIERTO*/
-						mysqli_query($BDConn, "INSERT INTO registro(`cedula`, `fecha`, `horaent`, `horasal`, `imgdata_ent`, `imgdata_sal`) VALUES('$cedula','$fecha','$hora','23:59:00.000000','$imagen','$vacio')");
-						echo("
-							<br/>
-							<div id='camara'>
-								<img src=$imagen>
-							</div>
-							<div id='GUI_Ingreso' class='bordes' style='height:auto;'>
-								<center>
-									Hola, <b>$nombre1 $nombre2 $apellido1</b><br/><br/>
-									Se registr&oacute; tu <b>Entrada</b><br/>
-									A las <b>$hora</b> del <b>$fecha</b>
-								</center>
-							</div>
-						");
-					}
-					else{
-						mysqli_query($BDConn, "update registro set horasal=current_time(),imgdata_sal='$imagen' where cedula='$cedula' and fecha='$fecha' and horasal='23:59:00.000000'");
-						echo("
-							<br/>
-							<div id='camara'>
-								<img src=$imagen>
-							</div>
-							<div id='GUI_Ingreso' class='bordes' style='height:auto;'>
-								<center>
-									Hola, <b>$nombre1 $nombre2 $apellido1</b><br/><br/>
-									Se registr&oacute; tu <b>Salida</b><br/>
-									A las <b>$hora</b> del <b>$fecha</b>
-								</center>
-							</div>
-						");
-					}
-				}
+        // 2 - Búsqueda de marcas actuales
+        $consultaMarcas="SELECT marcas.tipo as tipo, marcas.dia as dia, marcas.id as id   
+                        FROM funcionarios inner join genera INNER join marcas
+                        WHERE funcionarios.CI = '$cedula' 
+                        and marcas.ID = genera.id_marcas
+                        and marcas.dia = curdate()
+                        order by marcas.ID desc limit 1";
 			
-				
+        /*
+        $consultaMarcas -> resultset
+        $listaMarcas -> lista asociativa con los resultados
+        */
+        
+        $consultaMarcas=mysqli_query($BDConn,$consultaMarcas);
+        $listaMarcas=mysqli_fetch_assoc($consultaMarcas);
+        $tipoMarca = "entrada";
+        if(count($listaMarcas)>0){
+            /*Existe al menos un registro del dia
+            Se debe chequear si este registro es de tipo ENTRADA, ya que 1 registro
+            tipo SALIDA o ninguno equivalen a lo mismo: el funcionario firmó salida
+            ayer (caso 0 registros) u hoy (caso 1 registro SALIDA)
+            */
+            printf ("%s (%s) %s - %s - \n", $listaMarcas["tipo"],$listaMarcas["dia"],$listaMarcas["id"],($listaMarcas["tipo"]=="entrada") );
+            echo "linea 138 ok";
+            if($listaMarcas["tipo"]=="entrada"){
+                $tipoMarca = "salida";
+            }
+            $BDConn->query("insert into marcas (dia,hora,tipo) values ('$fecha','$hora','$tipoMarca')");
+        }
+        else {
+            echo "- else fila 148 OK -";
+            $BDConn->query("insert into marcas (dia,hora,tipo) values ('$fecha','$hora','$tipoMarca')");
+
+        }
+        
+        $ultMarcaQ=$BDConn->query("select ID from marcas order by ID desc limit 1");
+        $ultMarca=mysqli_fetch_assoc($ultMarcaQ);
+        $idMarca=$ultMarca["ID"];
+        echo "<p>AAAAA-- $idMarca --AAAA</p>";
+        $BDConn->query("insert into genera(ci_funcionario,id_marcas) values ('$cedula', $idMarca)");
+        echo $tipoMarca; 
+    			
 		}
-	
-	
 	
 	mysqli_close($BDConn);
 ?>

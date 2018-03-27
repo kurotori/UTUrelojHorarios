@@ -12,7 +12,8 @@ body{
     margin: 0 auto;
     width: 940px;
     font: 13px/22px Helvetica, Arial, sans-serif;
-    background: url("Image/Fondo_01.png")fixed no-repeat;
+    background: url("img/fondo.jpg")fixed no-repeat;
+    background-size: contain;
 	/*width: 100%;*/ 
 	/*height: 150px;*/ 
 	background-size: 100%;

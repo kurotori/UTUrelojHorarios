@@ -1,7 +1,9 @@
 body {
 	margin: 0px 0px 0px 0px;
 	font-family:Helvetica, Tahoma;
-	background-image:url("bg.jpg");
+	/*background-image:url("img/fondo.jpg" );
+    background-size: cover;*/
+    
 	font-size:20px;	
 }
 

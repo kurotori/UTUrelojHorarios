@@ -1,5 +1,5 @@
 <?php
-	$escuela="Escuela Técnica de Melo - UTU/CETP";
+	$escuela="Escuela Técnica Superior de Melo - UTU/CETP";
 	echo "
 		</div>
 		<div id='banner'>
