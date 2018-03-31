@@ -8,14 +8,14 @@
 		<html>
 			<head>
 				<meta http-equiv='Content-type' content='text/html;charset=UTF-8'>
-				<link rel='stylesheet' href='utu.css'>
-				<link rel='stylesheet' href='js/jpw/jquery.validate.password.css'>
-				<link rel='stylesheet' href='js/jquery-ui.css'>
-				<script type='text/javascript' src='js/jsw/webcam.js'></script>
-				<script type='text/javascript' src='js/jquery.js'></script>
-				<script type='text/javascript' src='js/jquery-ui.js'></script>
-				<script type='text/javascript' src='js/jval/jquery.validate.js'></script>
-				<script type='text/javascript' src='js/jval/localization/messages_es.js'></script>
+				<link rel='stylesheet' href='/UTURelojHorarios/utu.css'>
+				<link rel='stylesheet' href='/UTURelojHorarios/js/jpw/jquery.validate.password.css'>
+				<link rel='stylesheet' href='/UTURelojHorarios/js/jquery-ui.css'>
+				<script type='text/javascript' src='/UTURelojHorarios/js/jsw/webcam.js'></script>
+				<script type='text/javascript' src='/UTURelojHorarios/js/jquery.js'></script>
+				<script type='text/javascript' src='/UTURelojHorarios/js/jquery-ui.js'></script>
+				<script type='text/javascript' src='/UTURelojHorarios/js/jval/jquery.validate.min.js'></script>
+				<script type='text/javascript' src='/UTURelojHorarios/js/jval/localization/messages_es.js'></script>
 				<title>".$titulo."</title>
 				<script type='text/javascript'>
 					function startTime(){

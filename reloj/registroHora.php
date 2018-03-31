@@ -25,7 +25,7 @@
 		function InitializeTimer()
 		{
 			// Set the length of the timer, in seconds
-			secs = 20
+			secs = 3
 			StopTheClock()
 			StartTheTimer()
 		}
@@ -56,15 +56,16 @@
 			}
 		}
 	";
-	include "datos.php";
-	include "head-basico.php";
-	include "piedepagina.php";
-    include "funciones.php";
+	include "../datos.php";
+	include "../head-basico.php";
+	include "../piedepagina.php";
+    include "../funciones.php";
 	
 	echo "
 		<body ONLOAD='InitializeTimer();startTime();'>
-			<!--  Este formulario permite regresar a la página de registro -->
-			<form name='actualizar' action='ing_egr1.php'>
+
+<!--  Este formulario permite regresar a la página de registro -->
+			<form name='actualizar' action='/UTURelojHorarios/reloj/index.php'>
 				<input type='hidden' name='nada' value='0'>
 			</form>
 	";
@@ -94,7 +95,7 @@
 	
 	if(count($fila)==0){
 		echo("<div class='bordes alerta'>
-				<img src='alerta.png'>
+				<img src='/UTURelojHorarios /img/alerta.png'>
 				<br/><br/>
 				La C&eacute;dula de Identidad ingresada<br/> no se encuentra en el sistema<br/>
 				</div>
@@ -103,14 +104,14 @@
 		}
 
 	else{
-		echo "CI OK";
+		//echo "CI OK";
         $hora=$fila['current_time()'];
 		$fecha=$fila['current_date()'];
 		$nombre1=$fila['nombre'];
 		$nombre2=$fila['nombre2'];
 		$apellido1=$fila['apellido'];
 		$apellido2=$fila['apellido2'];
-		echo $hora;
+		//echo $hora;
         
         // 2 - Búsqueda de marcas actuales
         $consultaMarcas="SELECT marcas.tipo as tipo, marcas.dia as dia, marcas.id as id   
@@ -127,6 +128,7 @@
         
         $consultaMarcas=mysqli_query($BDConn,$consultaMarcas);
         $listaMarcas=mysqli_fetch_assoc($consultaMarcas);
+        
         $tipoMarca = "entrada";
         if(count($listaMarcas)>0){
             /*Existe al menos un registro del dia
@@ -134,15 +136,17 @@
             tipo SALIDA o ninguno equivalen a lo mismo: el funcionario firmó salida
             ayer (caso 0 registros) u hoy (caso 1 registro SALIDA)
             */
-            printf ("%s (%s) %s - %s - \n", $listaMarcas["tipo"],$listaMarcas["dia"],$listaMarcas["id"],($listaMarcas["tipo"]=="entrada") );
-            echo "linea 138 ok";
+            
+            //printf ("%s (%s) %s - %s - \n", $listaMarcas["tipo"],$listaMarcas["dia"],$listaMarcas["id"],($listaMarcas["tipo"]=="entrada") );
+            //echo "linea 138 ok";
+            
             if($listaMarcas["tipo"]=="entrada"){
                 $tipoMarca = "salida";
             }
             $BDConn->query("insert into marcas (dia,hora,tipo) values ('$fecha','$hora','$tipoMarca')");
         }
         else {
-            echo "- else fila 148 OK -";
+            //echo "- else fila 148 OK -";
             $BDConn->query("insert into marcas (dia,hora,tipo) values ('$fecha','$hora','$tipoMarca')");
 
         }
@@ -150,9 +154,30 @@
         $ultMarcaQ=$BDConn->query("select ID from marcas order by ID desc limit 1");
         $ultMarca=mysqli_fetch_assoc($ultMarcaQ);
         $idMarca=$ultMarca["ID"];
-        echo "<p>AAAAA-- $idMarca --AAAA</p>";
+        //echo "<p>AAAAA-- $idMarca --AAAA</p>";
         $BDConn->query("insert into genera(ci_funcionario,id_marcas) values ('$cedula', $idMarca)");
-        echo $tipoMarca; 
+        
+        
+        $BDConn->query("insert into fotos(foto_data) values ('$imagen')");
+        $ultFotoQ= $BDConn->query("select ID from fotos order by id desc limit 1");
+        $ultFoto=mysqli_fetch_assoc($ultFotoQ);
+        $idFoto=$ultFoto["ID"];        
+        $BDConn->query("insert into tienen (ID_marcas,ID_fotos) values ($idMarca , $idFoto)");
+        //echo $tipoMarca; 
+        
+        echo("
+							<br/>
+							<div id='camara'>
+								<img src=$imagen>
+							</div>
+							<div id='GUI_Ingreso' class='bordes' style='height:auto;'>
+								<center>
+									Hola, <b>$nombre1 $nombre2 $apellido1</b><br/><br/>
+									Se registr&oacute; tu <b>".ucfirst($tipoMarca)."</b><br/>
+									A las <b>$hora</b> del <b>$fecha</b>
+								</center>
+							</div>
+						");
     			
 		}
 	

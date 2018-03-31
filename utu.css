@@ -1,8 +1,8 @@
 body {
 	margin: 0px 0px 0px 0px;
 	font-family:Helvetica, Tahoma;
-	/*background-image:url("img/fondo.jpg" );
-    background-size: cover;*/
+	background-image:url("img/example3.jpg" );
+    background-size: cover;
     
 	font-size:20px;	
 }
@@ -18,6 +18,11 @@ a:hover{
 }
 
 a:visited{}
+
+select:active, select:hover {
+  outline: none;
+}
+
 
 #telon {
 	position:fixed;
@@ -35,8 +40,9 @@ a:visited{}
 	position:relative;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:30px;
-	border:#22316B solid 8px;
+	margin-top:10px;
+	border: #000 solid 8px;
+/*        #22316B solid 8px;*/
 	-webkit-border-top-right-radius: 15px;
 	-webkit-border-top-left-radius: 15px;
 	-moz-border-radius-topright: 15px;
@@ -46,6 +52,12 @@ a:visited{}
 }
 
 .bordes {
+    -webkit-border-top-right-radius: 15px;
+	-webkit-border-top-left-radius: 15px;
+	-moz-border-radius-topright: 15px;
+	-moz-border-radius-topleft: 15px;
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
 	-webkit-border-bottom-right-radius: 15px;
 	-webkit-border-bottom-left-radius: 15px;
 	-moz-border-radius-bottomright: 15px;
@@ -91,20 +103,57 @@ a:visited{}
 	position:relative;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:20px;
-	width:600px;
-	height:180px;
-	border:5px solid #22316B;
-	background-color:#D3E4F5;
+	margin-top:70px;
+	width:700px;
+	height:460px;
+	border:5px solid black;
+/*        #22316B;*/
+/*	background-color:white;
+        #D3E4F5;*/
+    background-image: url(img/blanco050_1x1.png);
 	padding:15px 15px 15px 15px;
-	color:#22316B;
+    
+	color:black;
+/*        #22316B;*/
 	z-index:99;
 }
 
+#GUI_Ingreso_zona_form{
+    width: 100%;
+    text-align: center;
+    padding-left: 70px;
+}
+
+#GUI_Ingreso_CI {
+    font-weight: bold;
+    text-align: center;
+    width: 700px;
+}
+
+#CI_logo{
+    width: 70px;
+    height: 70px;
+    position: relative;
+    float: left;
+    background-image: url(img/icono_usuarios.png);
+    background-size: cover;
+    
+}
+
+#CI_form{
+    position: relative;
+    height: 70px;
+    width: 560px;
+    text-align: center;
+}
+
 #cedula {
-	font-size:20px;
+    border: solid 1px dimgrey;
+    border-radius: 6px;
+	font-size:30px;
+    font-weight: bold;
 	text-align:center;
-	width:80%;
+	width:70%;
 }
 
 .campoTexto {
@@ -114,17 +163,18 @@ a:visited{}
 }
 
 .detalle {
-	position: absolute;
 	font-size: 14px;
-	text-align: center;
 	font-weight: bold;
 	width: 100%;
 }
 
 #boton_R {
-	font-size:20px;
+	font-size:30px;
+    font-weight: bold;
 	text-align:center;
-	margin-left: 260px;
+    margin-top: 10px;
+    background-color: #FFF;
+    color: black;
 }
 
 .boton {
@@ -151,25 +201,155 @@ a:visited{}
 
 #banner {
 	position:fixed;
-	top:auto;
-	bottom:0px;
-	left:0px;
-	right:auto;
+	top:0px;
+	bottom:auto;
+	left:30%;
+	right:30%;
 	/* width:100%; */
 	padding-right:20px;
 	padding-top:10px;
 	padding-bottom:10px;
 	padding-left:10px;
 	font-size:20px;
-	color:#22316B;
+    color: white;
+/*	color:#22316B;*/
+	text-align:center;
+	font-weight:bold;
+    background-color: black;
+/*	background-color:#D3E4F5;*/
+	-webkit-border-bottom-left-radius: 15px;
+	-moz-border-radius-bottomleft: 15px;
+	border-bottom-left-radius: 15px;
+    -webkit-border-bottom-right-radius: 15px;
+	-moz-border-radius-bottomright: 15px;
+	border-bottom-right-radius: 15px;
+	border:1px solid white;
+    border-top:none;
+/*        #B3C2E4;*/
+}
+
+#banner_admin {
+	position:fixed;
+	top:0px;
+	bottom:auto;
+	left:30%;
+	right:30%;
+	/* width:100%; */
+	padding-right:20px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:10px;
+	font-size:20px;
+    color: black;
+/*	color:#22316B;*/
+	text-align:center;
+	font-weight:bold;
+    background-image:url(img/blanco050_1x1.png);
+/*	background-color:#D3E4F5;*/
+	-webkit-border-bottom-left-radius: 15px;
+	-moz-border-radius-bottomleft: 15px;
+	border-bottom-left-radius: 15px;
+    -webkit-border-bottom-right-radius: 15px;
+	-moz-border-radius-bottomright: 15px;
+	border-bottom-right-radius: 15px;
+	border:1px solid white;
+    border-top:none;
+/*        #B3C2E4;*/
+}
+#menu_principal{
+    position: fixed;
+    top: 0px;
+    bottom: auto;
+    right: 0px;
+    left: auto;
+    width: 50px;
+    height: 45px;
+    font-size:15px;
+	color:#fff;
 	text-align:right;
 	font-weight:bold;
-	background-color:#D3E4F5;
-	-webkit-border-top-right-radius: 15px;
-	-moz-border-radius-topright: 15px;
-	border-top-right-radius: 15px;
-	border:1px solid #B3C2E4;
+    padding-bottom:5px;
+    padding-top: 5px;
+	background-color:black;
+	-webkit-border-bottom-left-radius: 15px;
+	-moz-border-radius-bottomleft: 15px;
+	border-bottom-left-radius: 15px;
+	border:1px solid white;
+    border-top:none;
+    border-right:none;
 }
+
+#menu_icono{
+    width: 45px;
+    height: 45px;
+    background-image: url(img/icono_engrane.png);
+    background-size: cover;
+    float:right;
+}
+
+#menu_icono:active{
+    background-size: 40px 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#menu_items{
+    display: none;
+    width: 237px;
+    height: 100%;
+    vertical-align: middle;
+    border-right-style: dashed;
+    border-right-width: 1px;
+    border-right-color: dimgrey;
+}
+
+.menu_item{
+    position: relative;
+    left: 5px;
+    right: auto;
+    height: 45px;
+    width: 200px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    -webkit-border-bottom-left-radius: 9px;
+	-moz-border-radius-bottomleft: 9px;
+	border-bottom-left-radius: 9px;
+}
+
+.menu_item:active .menu_item_icon{
+    background-size: 40px 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.menu_item:active .menu_item_texto{
+    font-size: 14px;
+}
+
+.menu_item:hover{
+    background-color: darkblue;
+}
+.menu_item::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.menu_item_texto{
+    padding-top: 13px;
+    width: 150px;
+    text-align: inherit;
+    vertical-align: middle;
+}
+.menu_item_icon{
+    float: right;
+    height: 45px;
+    width: 45px;
+    background-image:url(img/icono_candado.png);
+    background-size: cover;
+}
+
 
 #reloj {
 	position:fixed;
@@ -179,15 +359,110 @@ a:visited{}
 	right:0px;
 	padding:10px 10px 10px 10px;
 	font-size:20px;
-	color:#22316B;
-	background-color:#D3E4F5;
+	color:white;
+	background-color:black;
 	-webkit-border-top-left-radius: 15px;
 	-moz-border-radius-topleft: 15px;
 	border-top-left-radius: 15px;
 	font-style: italic;
 	text-align:left;
 	font-weight:bold;
-	border:1px solid #B3C2E4;
+	border-left:1px solid white;
+    border-top:1px solid white;
+}
+
+#reloj_admin {
+	position:fixed;
+	top:auto;
+	bottom:0px;
+	left:auto;
+	right:0px;
+	padding:10px 10px 10px 10px;
+	font-size:20px;
+	color:black;
+	background-image:url(img/blanco050_1x1.png);
+	-webkit-border-top-left-radius: 15px;
+	-moz-border-radius-topleft: 15px;
+	border-top-left-radius: 15px;
+	font-style: italic;
+	text-align:left;
+	font-weight:bold;
+	border-left:1px solid white;
+    border-top:1px solid white;
+}
+
+#GUI_login{
+    position:relative;
+	margin-left:auto;
+	margin-right:auto;
+    margin-top: 170px;
+    width: 450px;
+    height: 300px;
+    background-image: url(img/blanco050_1x1.png);
+    border: 5px solid black;
+    -webkit-border-top-right-radius: 15px;
+	-moz-border-radius-topright: 15px;
+	border-top-right-radius: 15px;
+    
+    -webkit-border-top-left-radius: 15px;
+	-moz-border-radius-topleft: 15px;
+	border-top-left-radius: 15px;
+    
+    -webkit-border-bottom-left-radius: 15px;
+	-moz-border-radius-bottomleft: 15px;
+	border-bottom-left-radius: 15px;
+    
+    -webkit-border-bottom-right-radius: 15px;
+	-moz-border-radius-bottomright: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+#GUI_login_titulo{
+    width: 100%;
+    text-align: center;
+}
+.GUI_login_campos {
+    border: solid 1px dimgrey;
+    border-radius: 6px;
+	font-size:30px;
+    font-weight: bold;
+	text-align:center;
+	width:70%;
+}
+
+.GUI_login_zona_campo{
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.GUI_login_campo_icono{
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-left: 40px;
+    margin-right: 10px;
+    background-size: cover;
+}
+
+#GUI_login_icono_CI{
+    background-image: url(img/icono_usuarios.png);
+}
+
+#GUI_login_icono_pass{
+    background-image: url(img/icono_candado.png);
+}
+
+.GUI_login_campo_input{
+    margin-top: 6px;
+}
+
+#GUI_login_boton_ing{
+    text-align: center;
+}
+
+#boton_ing{
+    font-weight: bold;
 }
 
 #volver {
@@ -283,4 +558,86 @@ label {display:block;clear:both;}
 	font-weight:normal;
 	display:none;
 	z-index:100;
+}
+
+/* Tooltip container */
+.infoglobo {
+    position: relative;
+    display: inline-block;
+    
+}
+
+/* Tooltip text */
+.infoglobo .infotexto {
+    top: 100%;
+    right: 115%; 
+    visibility: hidden;
+    width: 120px;
+    background-color: white;
+    color: #000;
+    text-align: center;
+    font-size: 12px;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.infoglobo:hover .infotexto {
+    visibility: visible;
+}
+.infoglobo .infotexto::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+}
+
+
+/* Tooltip container */
+.infoglobo_izq {
+    position: relative;
+    display: inline-block;
+    
+}
+
+/* Tooltip text */
+.infoglobo_izq .infotexto_izq {
+    top: 30%;
+    left: 95%; 
+    visibility: hidden;
+    width: 140px;
+    background-color: white;
+    color: #000;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.infoglobo_izq:hover .infotexto_izq {
+    visibility: visible;
+}
+.infoglobo_izq .infotexto_izq::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent white transparent transparent;
 }

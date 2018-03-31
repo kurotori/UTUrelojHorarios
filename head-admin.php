@@ -21,7 +21,7 @@
 						var s=today.getSeconds();
 						m = checkTime(m);
 						s = checkTime(s);
-						document.getElementById('reloj').innerHTML = h+':'+m+':'+s;
+						document.getElementById('reloj_admin').innerHTML = h+':'+m+':'+s;
 						var t = setTimeout(function(){startTime()},500);
 					}
 
