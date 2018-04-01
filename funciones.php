@@ -9,4 +9,24 @@
     }
 
 
+    function crearSal(){
+        $baseSal= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=][}{<>";
+        
+        $sal="";
+        
+        for($i=0;$i < 100;$i++){
+            $azar=random_int(0,99);
+            $sal=$sal.$baseSal[$azar];
+        }
+        echo "$sal";
+    }
+    
+    // crearSal();
+    
+    $pass = "300ratones";
+    $phash= password_hash($pass, PASSWORD_DEFAULT);
+    echo($phash."<br/>");
+    echo password_verify($pass,$phash);
+    echo password_verify($pass,'$2y$10$BKWWKVGueDY64aX33odyPO05WZmzB8Ed2h2BoUs2BxWPXrQ3nPaFa');
+
 ?>
